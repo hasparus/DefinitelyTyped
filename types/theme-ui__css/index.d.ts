@@ -306,6 +306,21 @@ interface AliasesCSSProperties {
      * @see https://developer.mozilla.org/docs/Web/CSS/padding-bottom
      */
     paddingY?: StandardCSSProperties['paddingTop'];
+
+    /**
+     * The **`size`** is shorthand property for CSS properties **`width`** and **`height`**. They set the width and height of an element.
+     *
+     * **Initial value**: `0`
+     *
+     * | Chrome | Firefox | Safari |  Edge  |  IE   |
+     * | :----: | :-----: | :----: | :----: | :---: |
+     * | **1**  |  **1**  | **1**  | **12** | **4** |
+     *
+     * @see https://github.com/system-ui/theme-ui/blob/master/packages/css/src/index.js#L39
+     * @see https://developer.mozilla.org/docs/Web/CSS/height
+     * @see https://developer.mozilla.org/docs/Web/CSS/width
+     */
+    size?: StandardCSSProperties['width']
 }
 
 interface OverwriteCSSProperties {
