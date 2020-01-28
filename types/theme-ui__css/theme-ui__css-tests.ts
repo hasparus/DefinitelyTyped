@@ -1,7 +1,7 @@
 import { css, Theme } from '@theme-ui/css';
 
-const theme: Theme = {
-    colors: {
+const theme = {
+    colorModes: {
         primary: 'tomato',
         secondary: 'cyan',
     },
@@ -51,6 +51,8 @@ const theme: Theme = {
         small: 5,
     },
 };
+
+const _t: Theme = theme;
 
 // functional values can return responsive arrays', () => {
 const result_5 = css({
@@ -108,7 +110,7 @@ css({
 
 // returns correct media query order
 css({
-    width: ['100%', , '50%'],
+    width: ['100%', '50%'],
     color: ['red', 'green', 'blue'],
 })(theme);
 
@@ -218,8 +220,9 @@ css({
     },
 });
 
+
 // works with functional arguments
-css((t: typeof theme) => ({
+css((t: TestTheme) => ({
     color: t.colors.primary,
 }))(theme);
 
@@ -232,7 +235,7 @@ css({
 // supports functional selectors
 css({
     header: (t: TestTheme) => ({
-        color: t.colors.primary,
+        color: t.c.primary,
     }),
 })(theme);
 

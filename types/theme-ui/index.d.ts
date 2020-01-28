@@ -10,16 +10,12 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 3.5
 
-import { SystemStyleObject } from '@styled-system/css';
-import * as CSS from 'csstype';
 import * as React from 'react';
-import { Theme as StyledSystemTheme } from 'styled-system';
 export * from '@theme-ui/components';
-export { css } from '@theme-ui/css';
+export { css, SystemStyleObject } from '@theme-ui/css';
 
 export {};
 
-type ObjectOrArray<T> = T[] | { [K: string]: T | ObjectOrArray<T> };
 
 export interface ThemeProviderProps<Theme> {
     theme: Partial<Theme> | ((outerTheme: Theme) => Theme);
@@ -28,90 +24,6 @@ export interface ThemeProviderProps<Theme> {
 
 // tslint:disable-next-line: no-unnecessary-generics
 export function ThemeProvider<Theme>(props: ThemeProviderProps<Theme>): React.ReactElement;
-
-/**
- * To use Theme UI color modes, color scales should include at least a text
- * and background color. These values are used in the ColorMode component to
- * set body foreground and background colors. Color modes should be defined as
- * nested objects within a theme.colors.modes object. Each key in this object
- * should correspond to a color mode name, where the name can be anything, but
- * typically light and dark are used for applications with a dark mode. The
- * initialColorModeName key is required to enable color modes and will be used as
- * the name for the root color palette.
- */
-export type ColorMode = {
-    [k: string]: CSS.ColorProperty | ObjectOrArray<CSS.ColorProperty>;
-} & {
-    /**
-     * Body background color
-     */
-    background: CSS.ColorProperty;
-
-    /**
-     * Body foreground color
-     */
-    text: CSS.ColorProperty;
-
-    /**
-     * Primary brand color for links, buttons, etc.
-     */
-    primary?: CSS.ColorProperty;
-
-    /**
-     * A secondary brand color for alternative styling
-     */
-    secondary?: CSS.ColorProperty;
-
-    /**
-     * A faint color for backgrounds, borders, and accents that do not require
-     * high contrast with the background color
-     */
-    muted?: CSS.ColorProperty;
-
-    /**
-     * A contrast color for emphasizing UI
-     */
-    accent?: CSS.ColorProperty;
-};
-
-export interface Theme extends StyledSystemTheme {
-    /**
-     * Enable/disable custom CSS properties/variables if lower browser
-     * support is required (for eg. IE 11).
-     *
-     * References: https://theme-ui.com/color-modes/#turn-off-custom-properties
-     */
-    useCustomProperties?: boolean;
-
-    /**
-     * Provide a value here to enable color modes
-     */
-    initialColorModeName?: string;
-
-    /**
-     * Define the colors that are available through this theme
-     */
-    colors?: ColorMode & {
-        /**
-         * Nested color modes can provide overrides when used in conjunction with
-         * `Theme.initialColorMode and `useColorMode()`
-         */
-        modes?: {
-            [k: string]: ColorMode;
-        };
-    };
-
-    /**
-     * Styles for elements rendered in MDX can be added to the theme.styles
-     * object. This is the primary, low-level way to control typographic and
-     * other styles in markdown content. Styles within this object are processed
-     * with @styled-system/css and have access to base theme values like colors,
-     * fonts, etc.
-     */
-    styles?: {
-        [P in StyledTags]?: SystemStyleObject;
-    };
-}
 
 /**
  * A React renderer with awareness of the `sx` prop.
