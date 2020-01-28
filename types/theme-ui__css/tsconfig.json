@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "jsx": "preserve",
         "module": "commonjs",
         "lib": [
             "es6"
@@ -14,9 +13,7 @@
             "../"
         ],
         "paths": {
-            "@styled-system/css": ["styled-system__css"],
-            "@theme-ui/components": ["theme-ui__components"],
-            "@theme-ui/css": ["theme-ui__css"]
+            "@theme-ui/css": ["theme-ui__css"],
         },
         "types": [],
         "noEmit": true,
@@ -24,6 +21,6 @@
     },
     "files": [
         "index.d.ts",
-        "theme-ui-tests.tsx"
+        "theme-ui__css-tests.ts"
     ]
 }

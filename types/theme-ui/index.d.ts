@@ -14,13 +14,12 @@ import { SystemStyleObject } from '@styled-system/css';
 import * as CSS from 'csstype';
 import * as React from 'react';
 import { Theme as StyledSystemTheme } from 'styled-system';
-import { Interpolation, SerializedStyles } from '@emotion/serialize';
 export * from '@theme-ui/components';
+export { css } from '@theme-ui/css';
 
 export {};
 
 type ObjectOrArray<T> = T[] | { [K: string]: T | ObjectOrArray<T> };
-
 
 export interface ThemeProviderProps<Theme> {
     theme: Partial<Theme> | ((outerTheme: Theme) => Theme);
@@ -120,16 +119,6 @@ export interface Theme extends StyledSystemTheme {
  * at the top of your file for use.
  */
 export const jsx: typeof React.createElement;
-
-/**
- * A utility from @styled-system/css for theming styles to be passed to Emotion's
- * css prop.
- *
- * Refer:
- * 1. https://styled-system.com/css/
- * 2. https://emotion.sh/docs/object-styles#with-css
- */
-export function css(styleObject: Interpolation): (theme: Theme) => SerializedStyles;
 
 /**
  * The `sx` prop accepts a `SxStyleProp` object and properties that are part of
